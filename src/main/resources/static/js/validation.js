@@ -1,5 +1,4 @@
 document.getElementById("signupform").addEventListener("submit", function(event){
-    alert("register");
     event.preventDefault();
 
     // Clear all previous error messages
@@ -7,7 +6,6 @@ document.getElementById("signupform").addEventListener("submit", function(event)
 
     //get all the form values
     const email = document.getElementById("email").value.trim();
-    alert(email);
     const password = document.getElementById("password").value.trim();
     const contactNumber = document.getElementById("contactNo").value.trim();
     const firstName = document.getElementById("firstName").value.trim();

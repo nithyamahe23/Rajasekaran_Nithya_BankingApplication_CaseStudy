@@ -1,5 +1,4 @@
 document.getElementById("withdrawForm").addEventListener("submit", function(event){
-    alert("in js");
     event.preventDefault();
     // Clear all previous error messages
     document
@@ -16,7 +15,6 @@ document.getElementById("withdrawForm").addEventListener("submit", function(even
         document.getElementById("invalidWithdrawError").style.display = "block";
     }else if((balance-withdrawAmount)<500)
     {
-        alert("in else");
         validBalance = false;
         document.getElementById("minimumBalanceError").style.display = "block";
     }
