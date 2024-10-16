@@ -66,6 +66,16 @@ Before starting, ensure that the following are installed.
 
 ## WORKING WITH THE APPLICATION
 ### USER FUNCTIONALITIES
-    -> Register : When User Clicks on Register, he will be redirected to fill his details. If the User is successfully registered,
-                  he will be redirected back to "Login" screen.
-    -> Login    : When the User gives valid Username and password, he will be redirected to
+    -> Register     : When User Clicks on Register, he will be redirected to fill his details. If the User is successfully registered,
+                      he will be redirected back to "Login" screen.
+    -> Login        : When the User gives valid Username and password, he will be redirected to "Welcome" page.
+    -> Edit Profile : When the user clicks on "EDIT PROFILE", he can update his details. When clicks on "DELETE", his profile will be deleted.
+
+### ACCOUNT MANAGEMENT
+    -> Add Account     : When the user clicks on "ADD ACCOUNT", he can add an account to his profile. When he adds, he will get an initial deposit of $200.
+    -> Account Details : When the user clicks on "ACCOUNT DETAILS", he can view the details of the account.
+
+### TRANSACTION MANAGEMENT
+    -> Deposit             : When the user clicks on "DEPOSIT" in account details, he can deposit amount to the account.
+    -> Withdraw            : When the user clicks on "WITHDRAW" in account details, he can withdraw amount from the account.
+    -> Transaction Details : When user click on "TRANSACTION DETAILS", he can view the details of the transactions he performed. 
