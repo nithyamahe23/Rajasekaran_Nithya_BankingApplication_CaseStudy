@@ -13,7 +13,7 @@ document.getElementById("withdrawForm").addEventListener("submit", function(even
     {
         validWithdrawal = false;
         document.getElementById("invalidWithdrawError").style.display = "block";
-    }else if((balance-withdrawAmount)<500)
+    }else if((balance-withdrawAmount)<50)
     {
         validBalance = false;
         document.getElementById("minimumBalanceError").style.display = "block";
