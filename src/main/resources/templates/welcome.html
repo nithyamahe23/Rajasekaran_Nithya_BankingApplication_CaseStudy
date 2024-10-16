@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <style>
+        #mainContainer {
+            height: 400px;
+            width: 500px;
+            border: 1px solid black;
+            border-radius: 1rem;
+            padding: 7px;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 5em;
+        }
+        h1{
+            margin-left: 2em;
+            margin-top: 1.5em;
+        }
+        #actionsContainer{
+            display: flex;
+            flex-direction: column;
+            height: 200px;
+            width: 300px;
+
+            padding: 2px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .buttonClass{
+            width:300px;
+            background-color: lightgray;
+            color: black;
+            height: 40px;
+            padding: 15px 35px;
+            border-style: ridge;
+            margin-bottom: 2em;
+            text-align: center;
+            line-height: .5em;
+        }
+    </style>
+</head>
+<body>
+<div id="mainContainer">
+    <h1>Welcome  <span th:text="${fullname}"></span> !!!</h1>
+    <!--<div id="actionsContainer">
+        <a th:href="@{/users/edit}" class="buttonClass">Edit Profile</a>
+        <a th:href="@{/accounts/showAddAccountForm/{username}(username=${username})}" class="buttonClass">Add Account</a>
+        <a th:href="@{/accounts/viewAccountDetails/{username}(username=${username})}" class="buttonClass">View Account Details</a>
+    </div>-->
+    <div id="actionsContainer">
+        <form th:action="@{/user/showEditForm}" th:method="post">
+            <input type="hidden" name="username" th:value="${username}">
+            <button type="submit" class="buttonClass">EDIT PROFILE</button>
+        </form>
+        <form th:action="@{/accounts/showAddAccountForm}" th:method="post">
+            <input type="hidden" name="username" th:value="${username}">
+            <button type="submit" class="buttonClass">ADD ACCOUNT</button>
+        </form>
+        <form th:action="@{/accounts/viewAccountDetails}" th:method="get">
+            <input type="hidden" name="username" th:value="${username}">
+            <button type="submit" class="buttonClass">ACCOUNT DETAILS</button>
+        </form>
+        <form th:action="@{/transaction/showTransactions}" th:method="post">
+            <input type="hidden" name="username" th:value="${username}">
+            <button type="submit" class="buttonClass">TRANSACTION DETAILS</button>
+        </form>
+
+
+    </div>
+</div>
+</body>
+</html>

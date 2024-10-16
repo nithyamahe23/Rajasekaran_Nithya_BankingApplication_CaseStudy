@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DEPOSIT</title>
+    <style>
+        .form-container{
+            height: 30em;
+            width: 40em;
+            border: 1px solid black;
+            border-radius: 1rem;
+            margin-left: 20em;
+        }
+        .form-contents-deposit{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-left: 5em;
+            padding-bottom: 2em;
+        }
+        .form-section {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+        }
+        .container {
+            display: flex;
+            height: 100%;
+            align-items: center;
+            margin-top: 5em;
+        }
+        .buttonClass{
+            width:125px;
+            background-color: lightgray;
+            color: black;
+            height: 40px;
+            padding: 15px 35px;
+            border-style: ridge;
+            margin-bottom: 2em;
+            text-align: center;
+            line-height: .5em;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="form-container">
+        <div class="form-section">
+            <div style="display: flex; flex-direction: row;margin-left: 1em">
+                <h1 style="align-content: center; margin-left: 6em;">DEPOSIT</h1>
+                <div style="margin-left: 1em;margin-top: 2em; align-content: center">
+                    <form th:action="@{/accounts/viewAccountDetails}" th:method="get">
+                        <input type="hidden" name="username" th:value="${transaction.user.emailId}">
+                        <button type = "submit" class="buttonClass">BACK</button>
+                    </form>
+                </div>
+            </div>
+            <form id="depositForm" th:action="@{/transaction/deposit}" method="post" th:object="${transaction}">
+                <input type="hidden" name="username" th:field="*{user.emailId}">
+                <div class = "form-contents-deposit">
+                    <label>Account Number:</label>
+                    <input type="text" name="accountNumber" th:field="*{accountDetails.accountNumber}" style="margin-right: 10em;width:200px;height:25px; font-size: 15px;"/>
+                </div>
+                <div class="form-contents-deposit">
+                    <label>Account Type:</label>
+                    <input type="text" name="accountType" th:field="*{accountDetails.accountType}" style="margin-right: 10em;width:200px;height:25px; font-size: 15px;"/>
+                </div>
+                <div class = "form-contents-deposit">
+                    <label>Balance:</label>
+                    <input
+                            type="text"
+                            name="balance"
+                            th:field="*{accountDetails.balance}"
+                            style="margin-right: 10em;width:200px;height:25px; font-size: 15px;"/>
+                </div>
+                <div class = "form-contents-deposit">
+                    <label>Amount:</label>
+                    <input type="text"
+                           name="transactionAmount"
+                           th:field="*{transactionAmount}"
+                           style="margin-right: 10em;width:200px;height:25px; font-size: 15px;"/>
+                </div>
+                <div style="margin-left: 16em;">
+                    <button type = "submit" class="buttonClass">DEPOSIT</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

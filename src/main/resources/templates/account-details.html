@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 2em;
+            width: 75%;
+            text-align: center;
+        }
+
+        tr:hover{
+            background-color : orange;
+        }
+        th{
+            background-color: #595fb6;
+        }
+        #tableDiv{
+            display: flex;
+            justify-content: center;
+            margin-top: 4em;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5em;
+        }
+        .buttonClass{
+            width:150px;
+            background-color: lightgray;
+            color: black;
+            height: 40px;
+            padding: 15px 35px;
+            border-style: ridge;
+            margin-bottom: 2em;
+            text-align: center;
+            line-height: .5em;
+        }
+    </style>
+</head>
+<body>
+<div style="display: flex; flex-direction: row; justify-content: center">
+<h1 style="align-content: center; margin-left: 2em;">ACCOUNT DETAILS</h1>
+<div style="margin-left: 1em;margin-top: 1em; align-content: center">
+    <form th:action="@{/user/welcome}" th:method="post">
+        <input type="hidden" name="username" th:value="${username}">
+        <button type = "submit" class="buttonClass">BACK</button>
+    </form>
+</div>
+</div>
+<div class="container">
+
+    <div th:each="account:${accounts}">
+        <div style="border: 1px solid; width: 40em; margin-bottom: 1em;">
+            <div style="display:flex; flex: 2;padding-left: 7em;
+            padding-bottom: 2em;">
+                <div style="display: flex; flex-direction: column; margin-top: 2em;">
+                    <p style="font-weight: bold; font-size: 15px;">ACCOUNT NUMBER :  <span th:text="${account.accountNumber}"></span></p>
+                    <p style="font-weight: bold; font-size: 15px;">ACCOUNT TYPE :  <span th:text="${account.accountType}"></span></p>
+                    <p style="font-weight: bold; font-size: 15px;">BALANCE :  <span th:text="${account.balance}"></span></p>
+                </div>
+                <div style="display: flex; flex-direction: column; justify-content: center; margin-top: 3.5em; margin-left: 5em;">
+                    <form th:action="@{/transaction/showDepositForm}" th:method="post">
+                        <input type="hidden" name="accountNumber" th:value="${account.accountNumber}">
+                        <input type="hidden" name="accountType" th:value="${account.accountType}">
+                        <input type="hidden" name="balance" th:value="${account.balance}">
+                        <input type="hidden" name="username" th:value="${username}">
+                        <button type="submit" class="buttonClass">DEPOSIT</button>
+                    </form>
+                    <form th:action="@{/transaction/showWithdrawalForm}" th:method="post">
+                        <input type="hidden" name="accountNumber" th:value="${account.accountNumber}">
+                        <input type="hidden" name="accountType" th:value="${account.accountType}">
+                        <input type="hidden" name="balance" th:value="${account.balance}">
+                        <input type="hidden" name="username" th:value="${username}">
+                        <button type="submit" class="buttonClass">WITHDRAW</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    function rowClicked(value) {
+        alert(value);
+    }
+</script>
+</body>
+</html>

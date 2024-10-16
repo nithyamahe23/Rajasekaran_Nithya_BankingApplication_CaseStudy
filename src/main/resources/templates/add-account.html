@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .form-section {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+        }
+
+        .form-contents{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 5em;
+            padding-bottom: 2em;
+        }
+
+        .btn-submit{
+            padding: 1em;
+            background-color: brown;
+            font-weight: bold;
+            color: antiquewhite;
+            border: none;
+            transition: color 0.5s ease, text-shadow 0.5s ease-in-out,
+            box-shadow 0.5s ease-in-out;
+            margin-bottom: 5em;
+        }
+        .form-container{
+            height: 30em;
+            width: 40em;
+            border: 1px solid black;
+            border-radius: 1rem;
+            margin-left: 20em;
+        }
+        .container {
+            display: flex;
+            height: 100%;
+            align-items: center;
+        }
+        </style>
+</head>
+<body>
+<div class="container">
+    <div class="form-container">
+    <div class="form-section">
+        <div style="display: flex; flex-direction: row;margin-left: 1em">
+        <h1 style="align-self: center; padding-left: 4em;">Add New Account</h1>
+        <div style="margin-left: 6em;margin-top: 5em;">
+            <form th:action="@{/user/welcome}" th:method="post">
+                <input type="hidden" name="username" th:value="${username}">
+                <button type = "submit" class="btn-submit">BACK</button>
+            </form>
+        </div>
+        </div>
+        <form id="addAccountForm" th:action="@{/accounts/addAccount/{username}(username=${username})}" th:method="post" th:object="${account}">
+            <div class = "form-contents">
+                <label style="margin-left: 5em;">Username:</label>
+                <span th:text="${username}"
+                      style="align-content:center;margin-left: 5em;width:400px;height:25px; font-size: 15px;"
+                ></span>
+            </div>
+            <div class = "form-contents">
+                <label style="margin-left: 5em;">Account Number:</label>
+                <input type="text"
+                       id="accountNumber"
+                       th:field="*{accountNumber}"
+                       style="margin-right: 15em;width:100px;height:25px; font-size: 15px;"/>
+            </div>
+            <div class="form-contents">
+                <label style="margin-left: 5em;">Account Type:</label>
+                <select
+                        th:field="*{accountType}"
+                        style="margin-right: 15em;width:110px;height:25px; font-size: 15px;"> <!-- Dropdown for task status -->
+                    <option value="Checking">Checking</option>
+                    <option value="Savings">Savings</option>
+                </select>
+            </div>
+            <div style="margin-left: 15em;">
+                <button type = "submit" class="btn-submit">ADD ACCOUNT</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+</html>
